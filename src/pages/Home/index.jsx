@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { AppContext } from "../../store/Store";
+import { useState } from "react";
 import Form from "../../components/Form";
 import { Col } from "reactstrap";
 import { sign_up_func, sign_in_func } from "../../services";
@@ -7,7 +6,6 @@ import styles from "./styles.module.css";
 import Message from "../../components/Message";
 
 export default () => {
-  const { setUser } = useContext(AppContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [registerSucess, setRegisterSucess] = useState(false);
