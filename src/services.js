@@ -15,3 +15,16 @@ export async function recover_password(username) {
   const response = await axios.get(`${base_url}/forgot-password/${username}`);
   return response;
 }
+
+export async function post_message(message, header) {
+  return await axios.post(`${base_url}/feed`, message, header);
+}
+
+export async function get_posts() {
+  const response = await axios.get(`${base_url}/feeds`, {
+    headers: {
+      Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+    },
+  });
+  return response;
+}
