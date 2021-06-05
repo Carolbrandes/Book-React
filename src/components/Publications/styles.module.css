@@ -1,0 +1,9 @@
+.publication_wrapper{
+    background-color: #fff;
+    border-radius: 30px;
+    margin-bottom: 1rem;
+}
+
+.publication_title{
+    color:  #f00d5f;
+}

@@ -10,6 +10,8 @@ body {
   background-repeat: no-repeat;
 }
 
+
+
 a {
   color: var(--color-03) !important;
   text-decoration: none !important;
@@ -48,4 +50,8 @@ textarea.form-control {
 
 .alert {
   border-radius: 30px !important;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
