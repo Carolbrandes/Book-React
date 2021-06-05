@@ -25,9 +25,10 @@ export default ({
   validateValue1,
   validateValue2,
 }) => {
-  const { signUp, signIn } = useContext(AppContext);
+  const { signUp, signIn, forgetPassword, setForgetPassword } =
+    useContext(AppContext);
   const [errorPassword, setErrorPassword] = useState(false);
-  const [forgetPassword, setForgetPassword] = useState(false);
+
   const [passwordRecover, setPasswordRecover] = useState("");
 
   const handlePassword = () => {
@@ -65,7 +66,7 @@ export default ({
         </FormGroup>
       </Col>
 
-      {passwordRecover !== "" && (
+      {passwordRecover !== "" && forgetPassword && (
         <p className={styles.password_recover}>
           <b>Senha:</b> {passwordRecover}
         </p>

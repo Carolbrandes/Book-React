@@ -5,15 +5,17 @@ import logo from "../../assets/logo.svg";
 import { Container, Row, Col, Button } from "reactstrap";
 
 export default () => {
-  const { setSignUp, setSignIn } = useContext(AppContext);
+  const { setSignUp, setSignIn, setForgetPassword } = useContext(AppContext);
 
   const handleSignUp = () => {
     setSignUp(true);
+    setForgetPassword(false);
     setSignIn(false);
   };
 
   const handleSignIn = () => {
     setSignUp(false);
+    setForgetPassword(false);
     setSignIn(true);
   };
   return (
