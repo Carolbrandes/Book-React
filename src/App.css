@@ -10,10 +10,16 @@ body {
   background-repeat: no-repeat;
 }
 
+a {
+  color: var(--color-03) !important;
+  text-decoration: none !important;
+}
+
 .form-control {
   border-radius: 30px !important;
   border-color: var(--color-03) !important;
   color: var(--color-03) !important;
+  padding-left: 1.5rem !important;
 }
 
 .form-control::placeholder {

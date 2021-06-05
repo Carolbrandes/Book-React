@@ -10,3 +10,8 @@ export async function sign_in_func(user) {
   const response = await axios.post(`${base_url}/sign-in`, user);
   return response;
 }
+
+export async function recover_password(username) {
+  const response = await axios.get(`${base_url}/forgot-password/${username}`);
+  return response;
+}

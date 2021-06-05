@@ -1,7 +1,15 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../../store/Store";
+import { recover_password } from "../../services";
 
-import { Col, FormGroup, Input, Button, FormFeedback } from "reactstrap";
+import {
+  Col,
+  FormGroup,
+  Input,
+  Button,
+  FormFeedback,
+  FormText,
+} from "reactstrap";
 import styles from "./styles.module.css";
 
 export default ({
@@ -17,8 +25,10 @@ export default ({
   validateValue1,
   validateValue2,
 }) => {
-  const { signUp } = useContext(AppContext);
+  const { signUp, signIn } = useContext(AppContext);
   const [errorPassword, setErrorPassword] = useState(false);
+  const [forgetPassword, setForgetPassword] = useState(false);
+  const [passwordRecover, setPasswordRecover] = useState("");
 
   const handlePassword = () => {
     if (value2.length < 3) {
@@ -27,6 +37,13 @@ export default ({
       setErrorPassword(false);
     }
   };
+
+  const recoverPassword = async () => {
+    const response = await recover_password(value1);
+    console.log(response);
+    setPasswordRecover(response.data.password);
+  };
+
   return (
     <div
       className={`${styles.form} p-5 d-flex flex-column align-items-center justify-content-center`}
@@ -48,30 +65,59 @@ export default ({
         </FormGroup>
       </Col>
 
+      {passwordRecover !== "" && (
+        <p className={styles.password_recover}>
+          <b>Senha:</b> {passwordRecover}
+        </p>
+      )}
+
       <Col className="pb-3" md={7}>
-        <FormGroup>
-          <Input
-            value={value2}
-            onInput={({ target }) => setValue2(target.value)}
-            type="password"
-            name="password"
-            placeholder="Senha"
-            onBlur={handlePassword}
-            invalid={errorPassword || validateValue2}
-          />
-          {errorPassword ||
-            (validateValue2 && (
-              <FormFeedback>A senha deve ter mais de 3 caracteres</FormFeedback>
-            ))}
-        </FormGroup>
+        {!forgetPassword && (
+          <FormGroup>
+            <Input
+              value={value2}
+              onInput={({ target }) => setValue2(target.value)}
+              type="password"
+              name="password"
+              placeholder="Senha"
+              onBlur={handlePassword}
+              invalid={errorPassword || validateValue2}
+            />
+            <FormText>
+              <a
+                onClick={() => setForgetPassword(true)}
+                className="ps-3"
+                href="#"
+              >
+                Esqueceu a senha?
+              </a>
+            </FormText>
+            {errorPassword ||
+              (validateValue2 && (
+                <FormFeedback>
+                  A senha deve ter mais de 3 caracteres
+                </FormFeedback>
+              ))}
+          </FormGroup>
+        )}
       </Col>
 
       <Col md={6}>
-        {signUp ? (
+        {forgetPassword && (
+          <Button
+            onClick={recoverPassword}
+            className="d-block w-100"
+            color="primary"
+          >
+            Recuperar senha
+          </Button>
+        )}
+        {signUp && (
           <Button onClick={function1} className="d-block w-100" color="primary">
             Cadastrar
           </Button>
-        ) : (
+        )}
+        {signIn && !forgetPassword && (
           <Button
             onClick={function2}
             className="d-block w-100"
