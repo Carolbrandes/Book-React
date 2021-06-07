@@ -49,7 +49,7 @@ export default ({
     <div
       className={`${styles.form} p-5 d-flex flex-column align-items-center justify-content-center`}
     >
-      <Col className="pb-3" md={7}>
+      <Col className="pb-3" xs={12} md={7}>
         <FormGroup>
           <Input
             value={value1}
@@ -72,7 +72,7 @@ export default ({
         </p>
       )}
 
-      <Col className="pb-3" md={7}>
+      <Col className="pb-3" xs={12} md={7}>
         {!forgetPassword && (
           <FormGroup>
             <Input
@@ -103,7 +103,7 @@ export default ({
         )}
       </Col>
 
-      <Col md={6}>
+      <Col xs={12} md={6}>
         {forgetPassword && (
           <Button
             onClick={recoverPassword}

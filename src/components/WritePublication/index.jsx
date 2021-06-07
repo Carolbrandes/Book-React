@@ -15,9 +15,11 @@ export default () => {
   };
 
   return (
-    <div className={`${styles.publication_wrapper} p-5 mt-5`}>
+    <div
+      className={`${styles.publication_wrapper} p-3 p-md-5 mt-3 mt-md-5 mb-4`}
+    >
       <FormGroup>
-        <Col sm={12}>
+        <Col xs={12}>
           <Input
             value={post}
             onInput={({ target }) => setPost(target.value)}

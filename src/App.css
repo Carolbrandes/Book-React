@@ -4,13 +4,17 @@
   --color-03: #f00d5f;
 }
 
+* {
+  color: var(--color-03);
+}
+
 body {
   background-image: url(./assets/bg-app.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
+  overflow: hidden;
 }
-
-
 
 a {
   color: var(--color-03) !important;
@@ -29,7 +33,6 @@ a {
 }
 
 textarea.form-control {
-  height: 150px !important;
   padding-top: 1.5rem !important;
 }
 
@@ -52,6 +55,12 @@ textarea.form-control {
   border-radius: 30px !important;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
+}
+
+@media (min-width: 1200px) {
+  textarea.form-control {
+    height: 150px !important;
+  }
 }

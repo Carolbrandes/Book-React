@@ -28,15 +28,23 @@ export default () => {
     <header className={styles.menu}>
       <nav className="py-2">
         <Container>
-          <Row className="justify-content-between align-items-center">
-            <Col md={5}>
+          <Row className="justify-content-md-between align-items-center">
+            <Col
+              className="mb-2 mb-md-0 d-flex justify-content-center justify-content-md-start"
+              xs={12}
+              md={5}
+            >
               <h1>
                 <img src={logo} alt="Segware Book" />
               </h1>
             </Col>
 
             {!window.localStorage.getItem("username") ? (
-              <Col md={4}>
+              <Col
+                className="d-flex justify-content-center justify-content-md-start pb-3 pb-md-0"
+                xs={12}
+                md={4}
+              >
                 <Button onClick={handleSignUp} className="me-3" color="primary">
                   Cadastrar
                 </Button>
@@ -45,7 +53,11 @@ export default () => {
                 </Button>
               </Col>
             ) : (
-              <Col md={4}>
+              <Col
+                className="d-flex align-items-center justify-content-center justify-content-md-start pb-3 pb-md-0"
+                xs={12}
+                md={4}
+              >
                 <span className="me-3">
                   Olá, {window.localStorage.getItem("username")}
                 </span>

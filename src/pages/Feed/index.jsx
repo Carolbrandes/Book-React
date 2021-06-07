@@ -21,13 +21,13 @@ export default () => {
     }
   }, []);
   return (
-    <Container className="pt-5">
-      <Row>
-        <Col sm={12} md={6}>
+    <Container className="pt-3 pt-md-5">
+      <Row className="justify-content-md-between">
+        <Col xs={12} md={5}>
           <WritePublication />
         </Col>
 
-        <Col className={styles.publications_col} sm={12} md={6}>
+        <Col className={styles.publications_col} xs={12} md={5}>
           {publications.length > 0 &&
             publications.map(({ content }, index) => (
               <Publications key={index} title={content} id={index} />

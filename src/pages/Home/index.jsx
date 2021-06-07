@@ -61,7 +61,7 @@ export default () => {
 
   return (
     <>
-      <Col className={styles.form_wrapper} md={6}>
+      <Col className={styles.form_wrapper} xs={10} md={6}>
         <Form
           value1={username}
           setValue1={setUsername}

@@ -1,5 +1,5 @@
 .publications_col {
-  height: 500px;
+  height: 300px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -16,4 +16,10 @@
   background-color: #817fdf; /* color of the scroll thumb */
   border-radius: 20px; /* roundness of the scroll thumb */
   height: 100px;
+}
+
+@media (min-width: 1200px) {
+  .publications_col {
+    height: 500px;
+  }
 }

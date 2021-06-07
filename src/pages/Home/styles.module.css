@@ -3,6 +3,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  border: 1px solid #f00d5f;
+  border-radius: 30px;
 }
 
 .alert_wrapper {
