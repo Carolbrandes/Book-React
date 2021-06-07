@@ -29,8 +29,8 @@ export default () => {
 
         <Col className={styles.publications_col} sm={12} md={6}>
           {publications.length > 0 &&
-            publications.map(({ content, authorId }, index) => (
-              <Publications key={index} title={content} id={authorId} />
+            publications.map(({ content }, index) => (
+              <Publications key={index} title={content} id={index} />
             ))}
         </Col>
       </Row>

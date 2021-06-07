@@ -9,6 +9,7 @@ export default ({ title, id }) => {
   const [numberOfLike, setLike] = useState(0);
 
   const handleHeart = async (reaction) => {
+    console.log(reaction);
     await post_reaction(reaction);
     setHeart((prev) => prev + 1);
   };
