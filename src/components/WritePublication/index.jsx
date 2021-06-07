@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { AppContext } from "../../store/Store";
 import { post_message, get_posts } from "../../services";
 import { getPublication } from "../../utils";
@@ -9,11 +9,10 @@ export default () => {
   const { setPublications } = useContext(AppContext);
   const [post, setPost] = useState("");
 
-  const handlePost = async () => await post_message({ content: post });
-
-  useEffect(() => {
+  const handlePost = async () => {
+    await post_message({ content: post });
     getPublication(get_posts, setPublications);
-  }, [handlePost]);
+  };
 
   return (
     <div className={`${styles.publication_wrapper} p-5 mt-5`}>
