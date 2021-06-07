@@ -16,8 +16,12 @@ export async function recover_password(username) {
   return response;
 }
 
-export async function post_message(message, header) {
-  return await axios.post(`${base_url}/feed`, message, header);
+export async function post_message(message) {
+  return await axios.post(`${base_url}/feed`, message, {
+    headers: {
+      Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+    },
+  });
 }
 
 export async function get_posts() {
@@ -27,4 +31,8 @@ export async function get_posts() {
     },
   });
   return response;
+}
+
+export async function post_reaction(reaction) {
+  await axios.post(`${base_url}/reaction`, reaction);
 }

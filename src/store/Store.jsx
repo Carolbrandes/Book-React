@@ -6,6 +6,7 @@ export default ({ children }) => {
   const [signUp, setSignUp] = useState(false);
   const [signIn, setSignIn] = useState(true);
   const [forgetPassword, setForgetPassword] = useState(false);
+  const [publications, setPublications] = useState([]);
 
   return (
     <AppContext.Provider
@@ -16,6 +17,8 @@ export default ({ children }) => {
         setSignIn,
         forgetPassword,
         setForgetPassword,
+        publications,
+        setPublications,
       }}
     >
       {children}

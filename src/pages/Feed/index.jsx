@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
+import { AppContext } from "../../store/Store";
 import { get_posts } from "../../services";
 import { Container, Row, Col } from "reactstrap";
 import WritePublication from "../../components/WritePublication";
-import Publications from "../../components/Publications"
-import styles from "./styles.module.css"
-
+import Publications from "../../components/Publications";
+import styles from "./styles.module.css";
 
 export default () => {
-  const [publications, setPublications] = useState([]);
+  const { publications, setPublications } = useContext(AppContext);
 
   const getPublication = async () => {
     const response = await get_posts();
-    setPublications(response.data)
+    setPublications(response.data);
   };
   useEffect(() => {
     if (
@@ -20,7 +20,7 @@ export default () => {
     ) {
       window.location.href = "/";
     } else {
-      getPublication();
+      getPublication(setPublications);
     }
   }, []);
   return (
@@ -31,7 +31,10 @@ export default () => {
         </Col>
 
         <Col className={styles.publications_col} sm={12} md={6}>
-          {publications.length > 0 && publications.map(({content}, index) => <Publications key={index} title={content} />)}
+          {publications.length > 0 &&
+            publications.map(({ content, authorId }, index) => (
+              <Publications key={index} title={content} id={authorId} />
+            ))}
         </Col>
       </Row>
     </Container>

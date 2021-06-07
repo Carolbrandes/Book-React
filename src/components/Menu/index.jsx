@@ -18,6 +18,12 @@ export default () => {
     setForgetPassword(false);
     setSignIn(true);
   };
+
+  const handleSignOut = () => {
+    window.localStorage.clear();
+    window.location.href = "/";
+  };
+
   return (
     <header className={styles.menu}>
       <nav className="py-2">
@@ -43,7 +49,11 @@ export default () => {
                 <span className="me-3">
                   Olá, {window.localStorage.getItem("username")}
                 </span>
-                <Button className="me-3" color="primary">
+                <Button
+                  onClick={handleSignOut}
+                  className="me-3"
+                  color="primary"
+                >
                   Sair
                 </Button>
               </Col>

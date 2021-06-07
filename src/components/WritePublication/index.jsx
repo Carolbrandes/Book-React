@@ -1,19 +1,24 @@
-import { post_message } from "../../services";
+import { useEffect, useState, useContext } from "react";
+import { AppContext } from "../../store/Store";
+import { post_message, get_posts } from "../../services";
 import { FormGroup, Input, Button, Col } from "reactstrap";
 import styles from "./styles.module.css";
-import { useState } from "react";
 
 export default () => {
+  const { setPublications } = useContext(AppContext);
   const [post, setPost] = useState("");
-  const handlePost = async () =>
-    await post_message(
-      { content: post },
-      {
-        headers: {
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-        },
-      }
-    );
+
+  const handlePost = async () => await post_message({ content: post });
+
+  const getPublication = async () => {
+    const response = await get_posts();
+    setPublications(response.data);
+  };
+
+  useEffect(() => {
+    getPublication();
+  }, [handlePost]);
+
   return (
     <div className={`${styles.publication_wrapper} p-5 mt-5`}>
       <FormGroup>

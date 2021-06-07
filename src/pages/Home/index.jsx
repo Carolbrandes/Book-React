@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "../../components/Form";
 import { Col } from "reactstrap";
 import { sign_up_func, sign_in_func } from "../../services";
@@ -49,6 +49,16 @@ export default () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (
+      window.localStorage.getItem("token") &&
+      window.localStorage.getItem("username")
+    ) {
+      window.location.href = "/feed";
+    }
+  }, []);
+
   return (
     <>
       <Col className={styles.form_wrapper} md={6}>
