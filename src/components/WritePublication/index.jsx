@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { AppContext } from "../../store/Store";
 import { post_message, get_posts } from "../../services";
+import { getPublication } from "../../utils";
 import { FormGroup, Input, Button, Col } from "reactstrap";
 import styles from "./styles.module.css";
 
@@ -10,13 +11,8 @@ export default () => {
 
   const handlePost = async () => await post_message({ content: post });
 
-  const getPublication = async () => {
-    const response = await get_posts();
-    setPublications(response.data);
-  };
-
   useEffect(() => {
-    getPublication();
+    getPublication(get_posts, setPublications);
   }, [handlePost]);
 
   return (

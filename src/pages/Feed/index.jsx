@@ -1,6 +1,7 @@
 import { useEffect, useContext } from "react";
 import { AppContext } from "../../store/Store";
 import { get_posts } from "../../services";
+import { getPublication } from "../../utils";
 import { Container, Row, Col } from "reactstrap";
 import WritePublication from "../../components/WritePublication";
 import Publications from "../../components/Publications";
@@ -9,10 +10,6 @@ import styles from "./styles.module.css";
 export default () => {
   const { publications, setPublications } = useContext(AppContext);
 
-  const getPublication = async () => {
-    const response = await get_posts();
-    setPublications(response.data);
-  };
   useEffect(() => {
     if (
       !window.localStorage.getItem("username") ||
@@ -20,7 +17,7 @@ export default () => {
     ) {
       window.location.href = "/";
     } else {
-      getPublication(setPublications);
+      getPublication(get_posts, setPublications);
     }
   }, []);
   return (
